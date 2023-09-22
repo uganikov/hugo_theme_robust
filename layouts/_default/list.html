@@ -12,7 +12,7 @@
 
     {{ $pctx := . }}
     {{ if .IsHome }}{{ $pctx = .Site }}{{ end }}
-    {{ $paginator := .Paginate $pctx.RegularPages }}
+    {{ $paginator := .Paginate (uniq ($pctx.RegularPages))  }}
     {{ range $paginator.Pages }}
     <div class="mcol c6">
       <article class="li">
