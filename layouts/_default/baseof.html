@@ -55,13 +55,11 @@
   gtag('config', '{{ .Site.GoogleAnalytics }}');
 </script>
 {{ end }}
-    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
-      {{ if or (eq .Section "categories") (eq .Section "tags") (eq .Section "pages") }}  
-      {{ else }}
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.GoogleAdSense }}"
-     crossorigin="anonymous"></script>
-      {{ end }}
-    {{ end }}
+{{ if and .Site.GoogleAdSense (ne (getenv "HUGO_ENV") "DEV") }}
+{{ if and (ne .Section "categories") (ne .Section "tags") (ne .Section "pages") }}  
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.GoogleAdSense }}" crossorigin="anonymous"></script>
+{{ end }}
+{{ end }}
   </head>
   <body>
     <header class="l-header">
