@@ -55,9 +55,9 @@
   gtag('config', '{{ .Site.GoogleAnalytics }}');
 </script>
 {{ end }}
-{{ if and .Site.GoogleAdSense (ne (getenv "HUGO_ENV") "DEV") }}
+{{ if and .Site.Params.GoogleAdSense (ne (getenv "HUGO_ENV") "DEV") }}
 {{ if and (ne .Section "categories") (ne .Section "tags") (ne .Section "pages") }}  
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.GoogleAdSense }}" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.Params.GoogleAdSense }}" crossorigin="anonymous"></script>
 {{ end }}
 {{ end }}
   </head>
