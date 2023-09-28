@@ -45,11 +45,7 @@
       </header>
       <ul class="terms">
         {{ range (index $params $key) }}
-        {{ if eq $key "archives" }}
-        <li><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . }}</a></li>
-        {{ else }}
         <li><a href="{{ $.Site.BaseURL }}{{ $key | urlize }}/{{ . | urlize }}/">{{ . }}</a></li>
-        {{ end }}
         {{ end }}
       </ul>
     </section>
